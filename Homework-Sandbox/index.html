@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Homework Sandbox :: Hangman or Guess-A-Letter</title>
+</head>
+<body>
+
+	<h1>The Pyschic Game</h1>
+
+
+	<div id="won"></div>
+	<div id="lost"></div>
+	<div id="guesses"></div>
+	
+	<!-- <form>
+		<fieldset>
+			<label for="guess">Guess what letter I'm thinking of:</label>
+			<input type="text" id="guess">
+		</fieldset>
+	</form> -->
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
+			var guesses = 10;
+			var won = 0;
+			var lost = 0;
+			var computerPick = alphabet[Math.floor(Math.random() * 26)];
+			var guess = null;
+			console.log(computerPick);
+		//variables for testing purposes
+		var correct = 0;
+		var wrong = 0;
+
+		// Fire an event when user presses a letter on the keyboard; save the keypress to variable: guess. Then compare to computer's pick to determine if player's guess is correct or not
+
+			
+			for (i = 10; i > 0; i--) {
+			document.onkeypress = function(event) {
+				var guess = event.key;
+				if (guess === computerPick) {
+					correct ++;
+					won ++;
+					
+				}
+
+				else {
+					wrong ++;
+					lost ++;
+					guesses --;
+					
+					document.write("Incorrect, try again. You have " + guesses + " guesses left.");
+				}
+
+				// document.write("Correct: " + correct + " / ");
+				// document.write("Incorrect: " + wrong + " / ");
+				// document.write("Computer picked: " + computerPick);
+				// document.write("Won " + won) + "<br>";
+				// document.write("Lost" + lost) + "<br>";
+				
+				
+			}
+				document.getElementById('won').InnerHTML = "Won: " + won;
+				document.getElementById('lost').InnerHTML = "Lost: " + lost;
+				document.getElementById('guesses').InnerHTML = "Guesses left: " + guesses;
+
+				console.log(guesses);
+		}	
+		
+
+	});
+
+
+</script>
+
+
+
+
+</body>
+</html>
+
+<!-- Hangman proto-code -->
+<!--Create a space to put the empty letter spots -->
+<!-- <div id="guesses"></div> -->
+
+<!--Create an array to collect the indiviual letters of the hangman word-->
+<!-- <div id="usedLetters"></div>  -->
+
+<!-- Guess a letter: <input type="text" name="gLetter"> -->
+
+
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!-- <script type="text/javascript"> -->
+
+	<!-- $(document).ready(function() { -->
+
+
+
+		<!-- //Generate a random number - either a zero or a one to grab a specific element from a 2-element test array
+		var x = Math.floor(Math.random() * 2);
+		alert("Random number: " + x);
+		var wordLetters = [];
+	-->
+		<!-- //Create a test array containing two elements then display the word based on the random number generated
+		var words = ["syzygy", "sesquipedalian"];
+		alert("Hangman word #" + x + " " + words[x]);
+		alert(words[x] + " has " + words[x].length + " letters");
+
+		//Create a for loop to harvest the letters from the words in order to compare them to the player guesses
+		for (i = 0; i < words[x].length; i++) {
+			var letterPlace = "__ ";
+			$("#guesses").append(letterPlace);
+			wordLetters[i] = words[x].substring(i, (i+1));
+
+
+		}
+
+		//Create a loop to give the player X chances to guess the word. FOR or WHILE?
+
+		//Player inputs a letter to guess
+		$("#usedLetters").click(function() {
+			var guess = $("<div>");
+			// $("#gLetter").keypress();
+			$("#usedLetters").append(guess);
+
+
+		});
+
+
+		
+	});
+
+
+</script> -->
+
